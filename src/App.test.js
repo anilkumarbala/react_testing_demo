@@ -1,8 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
+import { logRoles } from '@testing-library/dom';
 
 test('button has correct initial color and updates when clicked', () => {
-  render(<App/>);
+  const {container}=render(<App/>);
+  logRoles(container);
   const colorButton=screen.getByRole('button',{name:'Change to blue'});
   expect(colorButton).toHaveStyle({ backgroundColor:"red" });
 });
@@ -26,8 +28,8 @@ test('initial conditions', () => {
 });
 test('checkbox disables button on first click and enables on second click',()=>{
   render(<App/>);
-  const checkbox=screen.getByRole('checkbox');
-  const button=screen.getByRole('button');
+  const checkbox=screen.getByRole('checkbox' ,{name:'Disable button'});
+  const button=screen.getByRole('button',{name:'Change to blue'});
   fireEvent.click(checkbox);
   expect(button).toBeDisabled();
   fireEvent.click(checkbox);
