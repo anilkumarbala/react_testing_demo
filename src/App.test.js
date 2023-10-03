@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 import { logRoles } from '@testing-library/dom';
+import { replaceCamelWithSpaces } from './App'
 
 test('button has correct initial color and updates when clicked', () => {
   const {container}=render(<App/>);
@@ -56,4 +57,15 @@ test('Disables button has gray background and reverts to blue',()=>{
   fireEvent.click(checkbox);
   expect(button).toHaveStyle('background-color:blue');
 
+});
+describe('spaces before camel-case capital letters', () => {
+  test('Works for no inner capital letters', () => {
+    expect(replaceCamelWithSpaces('Gabriel')).toBe('Gabriel');
+  });
+  test('Works for one inner capital letter', () => {
+    expect(replaceCamelWithSpaces('AnilKumar')).toBe('Anil Kumar');
+  });
+  test('Works for multiple inner capital letters', () => {
+    expect(replaceCamelWithSpaces('BalaAnilKumar')).toBe('Bala Anil Kumar');
+  });
 });
