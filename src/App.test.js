@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 import { logRoles } from '@testing-library/dom';
 import { replaceCamelWithSpaces } from './App'
-////////////////
+
 
 test('button has correct initial color and updates when clicked', () => {
   const {container}=render(<App/>);
