@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 export function replaceCamelWithSpaces(colorName) {
@@ -28,5 +27,4 @@ function App() {
    
   );
 }
-
 export default App;
